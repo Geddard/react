@@ -8,7 +8,6 @@ var Debt = React.createClass({
     render: function () {
         return (
             <div className='card'>
-                <img className={this.getPicClasses()} src={this.getUser()}/>
                 <img className={this.getHiddenSealClasses()} src='/assets/img/x2.png'/>
                 {this.renderCardData()}
             </div>
@@ -18,26 +17,12 @@ var Debt = React.createClass({
     renderCardData: function () {
         return (
             <div className='debt-data'>
-                <p className='card-item'>{this.props.name}</p>
-                <p className='card-item'>{this.props.cat}</p>
+                <p className='card-item card-item--name'>{this.props.name}</p>
+                <p className='card-item card-item--cause'>{this.props.cat}</p>
                 <p className='card-item'>Fecha: {Moment(this.props.date, 'MM/DD/YYYY - HH:mm').format('DD-MM-YYYY - HH:mm')} </p>
                 <input className='clouds-flat-button' type='button' value='Pagado' onClick={this.deleteCard} />
             </div>
         );
-    },
-
-    getPicClasses: function () {
-        var twoWeeks = Moment().subtract(2, 'weeks').format('MM/DD/YYYY');
-        var threeWeeks = Moment().subtract(3, 'weeks').format('MM/DD/YYYY');
-        var fourWeeks = Moment().subtract(4, 'weeks').format('MM/DD/YYYY');
-        var date = this.props.date;
-
-        return classNames({
-            'pic': true,
-            'mild-red-card': this.getDateRange(date, twoWeeks, threeWeeks, 'between'),
-            'red-card': this.getDateRange(date, threeWeeks, fourWeeks, 'between'),
-            'red-glowing-card': this.getDateRange(date, fourWeeks, null, 'before')
-        });
     },
 
     getHiddenSealClasses: function () {
@@ -65,7 +50,7 @@ var Debt = React.createClass({
 
     getUser: function () {
         return this.props.user || '/assets/img/panched.gif';
-    },    
+    },
 
     deleteCard: function() {
         var firebaseCardsRef = new Firebase('http://mutombo-cards.firebaseio.com/' + this.props.cardId);
