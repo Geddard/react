@@ -63,17 +63,16 @@
         }
 
         .clouds-flat-button {
-            width: 150px;
-            height: 35px;
-            font-size: 19px;
             background-color: #ecf0f1;
-            float: left;
-            padding-top: 16px;
-            padding-right: 58px;
-            color: #e69133;
-            text-transform: uppercase;
             border: 0;
+            color: #e69133;
             cursor: pointer;
+            float: left;
+            font-size: 45px;
+            height: 50px;
+            margin: 0 70px;
+            text-transform: uppercase;
+            width: 50px;
         }
         .clouds-flat-button:active {
             top: 1px;
